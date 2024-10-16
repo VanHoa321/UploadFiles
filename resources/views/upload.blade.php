@@ -53,7 +53,7 @@
 </section>
 
 <!-- Modal -->
-<div id="uploadModal" class="fixed inset-x-0 top-[4.0rem] bg-gray-900 bg-opacity-70 hidden flex items-center justify-center">
+<div id="uploadModal" class="fixed inset-x-0 top-[4.0rem] bg-gray-900 bg-opacity-70 z-50 hidden flex items-center justify-center">
     <div class="bg-white w-full h-[70%] p-6 shadow-lg overflow-y-auto">
         <div class="text-left text-xs text-gray-500 leading-tight">
             DOC, PDF, ZIP, PHP, TEXT, JPG PNG BMP GIF TIF WEBP HEIC AVIF PDF... GIỚI HẠN: 10MB
@@ -86,6 +86,7 @@
         </main>
     </div>
 </div>
+<div id="modalOverlay" class="fixed inset-0 top-[4.0rem] bg-gray-400 z-40 hidden"></div>
 
 <footer class="text-center py-4 text-gray-600">
     <div class="flex justify-center space-x-4 mb-2">
@@ -101,6 +102,7 @@
 
     document.getElementById('modalOpenBtn').addEventListener('click', function() {
         document.getElementById('uploadModal').classList.remove('hidden');
+        document.getElementById('modalOverlay').classList.remove('hidden');
     });
     const uploadedFiles = [];
 
@@ -186,6 +188,7 @@
             uploadedFiles.length = 0;
             document.getElementById('autoDeleteSection').classList.add('hidden');
             document.getElementById('uploadBtn').classList.add('hidden');
+            document.getElementById('modalOverlay').classList.add('hidden');
         });
     });
 
